@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
+    #region Properties
     private Vector2 fingerDownPosition;
     private Vector2 fingerUpPosition;
 
@@ -16,6 +17,9 @@ public class InputController : MonoBehaviour
 
     public static event Action<SwipeData> OnSwipe = delegate { };
 
+    #endregion
+
+    #region Unity Callbacks
     private void Update()
     {
 #if UNITY_IOS || UNITY_ANDROID
@@ -74,16 +78,14 @@ public class InputController : MonoBehaviour
         //if (Input.GetMouseButtonDown(0))
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            //Debug.Log("Pressed primary button.");
-            //Debug.Log("Mouse clicked in : " +  new Vector2(Input.mousePosition.x, Input.mousePosition.y));
             fingerDownPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            //fingerDownPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             fingerUpPosition = fingerDownPosition;
             SendSwipe(SwipeDirection.Touch);
         }
 #endif
 
     }
+    #endregion
 
     #region Private Methods
 
@@ -139,6 +141,7 @@ public class InputController : MonoBehaviour
     #endregion
 }
 
+#region Structures and enums
 public struct SwipeData
 {
     public Vector2 StartPosition;
@@ -154,3 +157,5 @@ public enum SwipeDirection
     Right,
     Touch
 }
+
+#endregion

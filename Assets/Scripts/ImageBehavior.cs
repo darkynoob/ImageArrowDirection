@@ -15,7 +15,6 @@ public class ImageBehavior : MonoBehaviour
     {
         Vector2 direction = new Vector2(target.transform.position.x - arrowImage.transform.position.x, target.transform.position.y - arrowImage.transform.position.y);
         arrowImage.transform.right = direction;
-        //arrowImage.transform.position = Vector3.right  * direction;
     }
 
 }

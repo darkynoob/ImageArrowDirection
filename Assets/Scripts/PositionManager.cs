@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class PositionManager : MonoBehaviour
 {
+    #region Properties
+
     [SerializeField] private GameObject imageCenter;
     private ImageBehavior imagenBehaviour;
-    //private InputController inputController;
+
+    #endregion
+
+    #region UnityCallbacks
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,10 @@ public class PositionManager : MonoBehaviour
         
     }
 
+    #endregion
+
+    #region PrivateMethods
+
     private void OnInput(SwipeData data)
     {
         MoveImage(data.EndPosition);
@@ -38,5 +47,7 @@ public class PositionManager : MonoBehaviour
         Vector2 newPosition = new Vector2(data.x, data.y);
         imagenBehaviour.SetPosition(newPosition);
     }
+
+    #endregion
 
 }
